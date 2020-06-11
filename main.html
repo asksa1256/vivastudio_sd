@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>vivastudio</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.4/TweenMax.min.js"></script>
+    </head>
+    <body>
+       <div class="banner">
+            <video autoplay muted loop>
+                <source src="bg.mp4" type="video/mp4">
+            </video>
+        </div><!-- banner end -->
+        
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="vivastudio"></a>
+        </div>
+        
+       
+        <section id="main">
+        <div class="cursor"></div><!-- cursor end -->
+        <div class="wrapper">
+            <div class="project-list">
+                <div class="project p-1">
+                    <div class="project-title"><h1>LOOKBOOK</h1></div>
+                    <div class="project-categ">2015 - 2020</div>
+                    <div class="project-overlay"></div>
+                </div>
+                
+                <div class="project p-2">
+                    <div class="project-title"><h1>EDITORIAL</h1></div>
+                    <div class="project-categ">Porcupine Dilemma</div>
+                    <div class="project-overlay"></div>
+                </div>
+                
+                <div class="project p-3">
+                    <div class="project-title"><h1>NEW ARRIVALS</h1></div>
+                    <div class="project-categ">2020 S/S</div>
+                    <div class="project-overlay"></div>
+                </div>
+                
+                <div class="project p-4">
+                    <div class="project-title"><h1>SHOP</h1></div>
+                    <div class="project-categ">vivastudio</div>
+                    <div class="project-overlay"></div>
+                </div>
+            </div><!-- project-list end -->
+        </div><!-- wrapper end -->
+        </section><!-- main -->
+        
+        <footer>
+            <ul class="lnb">
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Bag(0)</a></li>
+                <li><a href="#">Board</a></li>
+                <li><a href="#">Offline Store</a></li>
+            </ul>
+            
+            <ul class="lan">
+                <li><a href="#"><img src="usd.jpg" alt="language" style="margin-right:5px;">USD</a></li>
+                <li><a href="#"><img src="krw.jpg" alt="language" style="margin-right:5px;">KRW</a></li>
+            </ul>
+            
+            <ul class="sns">
+                <li><a href="#"><img src="youtube.png" alt="youtube"></a></li>
+                <li><a href="#"><img src="instagram.png" alt="instagram"></a></li>
+                <li><a href="#"><img src="facebook.png" alt="facebook"></a></li>
+            </ul>
+        </footer>
+        
+        
+        
+        <script>
+            var $cursor = $(".cursor"),
+                $overlay = $(".project-overlay");
+            
+            function moveCircle(e) {
+                TweenLite.to($cursor, 0.5, {
+                    css: {
+                        left: e.pageX,
+                        top: e.pageY
+                    },
+                    delay: 0.03
+                });
+            }
+            
+            $(".p-1").hover(function() {
+                $(".cursor").css({ "background-image": "url(image-1.jpg)"})
+                .css({"width" : "400px"})
+                .css({"height" : "600px"})
+                ;
+            });
+            $(".p-2").hover(function() {
+                $(".cursor").css({ "background-image": "url(image-2.jpg)"})
+                .css({"width" : "600px"})
+                .css({"height" : "400px"})
+                ;
+            });
+            $(".p-3").hover(function() {
+                $(".cursor").css({ "background-image": "url(image-3.gif)"})
+                .css({"width" : "400px"})
+                .css({"height" : "600px"})
+                ;
+            });
+            $(".p-4").hover(function() {
+                $(".cursor").css({ "background-image": "url(image-4.gif)"})
+                .css({"width" : "400px"})
+                .css({"height" : "600px"})
+                ;
+            });
+            
+            var flag = false;
+            $($overlay).mousemove(function() {
+                flag = true;
+                TweenLite.to($cursor, 0.3, {scale: 1, autoAlpha: 1});
+                $($overlay).on("mousemove", moveCircle);
+            });
+            
+            $($overlay).mouseout(function() {
+                flag = false;
+                TweenLite.to($cursor, 0.3, {scale: 0, autoAlpha: 1});
+            });
+        </script>
+    </body>
+</html>
